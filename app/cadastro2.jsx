@@ -1,79 +1,143 @@
 import { Link } from 'expo-router';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
 
 export default function Cadastro2() {
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Image
+        source={require('../images/Logo1.png')}
+        style={styles.logo}
+      />
       <Text style={styles.title}>Agora, mais alguns dados sobre você:</Text>
-      <TextInput 
-        style={styles.input} 
-        placeholder="Insira seu CEP" 
-        keyboardType="numeric" 
-      />
-      <TextInput 
-        style={styles.input} 
-        placeholder="Insira seu endereço" 
-      />
-      <TextInput 
-        style={styles.input} 
-        placeholder="Insira seu número" 
-        keyboardType="numeric" 
-      />
-      <TextInput 
-        style={styles.input} 
-        placeholder="Insira seu complemento" 
-      />
-      <TextInput 
-        style={styles.input} 
-        placeholder="(00) 00000-0000" 
-        keyboardType="phone-pad" 
-      />
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Voltar</Text>
-        </TouchableOpacity>
-        <Link href="/cadastro3" style={styles.button}>
-          <Text style={styles.buttonText}>Avançar</Text>
-        </Link>
+      
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>CEP</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Insira seu CEP"
+          placeholderTextColor="#999"
+          keyboardType="numeric"
+        />
       </View>
-    </View>
+      
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Endereço</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Insira seu endereço"
+          placeholderTextColor="#999"
+        />
+      </View>
+      
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Número</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Insira seu número"
+          placeholderTextColor="#999"
+          keyboardType="numeric"
+        />
+      </View>
+      
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Complemento</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Insira seu complemento"
+          placeholderTextColor="#999"
+        />
+      </View>
+      
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Telefone</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="(00) 00000-0000"
+          placeholderTextColor="#999"
+          keyboardType="phone-pad"
+        />
+      </View>
+      
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.buttonSecondary}>
+          <Link href="/Cadastro1" style={styles.buttonSecondaryText}>Voltar</Link>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonPrimary}>
+          <Link href="/Cadastro3" style={styles.buttonPrimaryText}>Avançar</Link>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
+    backgroundColor: '#fff',
+  },
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
+    fontWeight: 'bold',
     marginBottom: 20,
+    textAlign: 'center',
+  },
+  inputContainer: {
+    width: '100%',
+    marginBottom: 15,
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: '#003366',
+    fontWeight: 'bold',
   },
   input: {
     width: '100%',
     height: 40,
-    borderColor: '#ccc',
     borderWidth: 1,
-    marginBottom: 15,
+    borderColor: '#ccc',
+    borderRadius: 5,
     paddingHorizontal: 10,
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
+    marginTop: 20,
   },
-  button: {
-    backgroundColor: '#007BFF',
-    padding: 10,
-    alignItems: 'center',
+  buttonPrimary: {
     flex: 1,
-    marginHorizontal: 5,
+    backgroundColor: '#003366',
+    padding: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginLeft: 5,
   },
-  buttonText: {
+  buttonSecondary: {
+    flex: 1,
+    backgroundColor: '#ccc',
+    padding: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginRight: 5,
+  },
+  buttonPrimaryText: {
     color: '#fff',
     fontSize: 16,
+    fontWeight: 'bold',
+  },
+  buttonSecondaryText: {
+    color: '#333',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

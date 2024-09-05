@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "HealthTech",
-    "slug": "HealthTech",
+    "name": "HealthTech2",
+    "slug": "HealthTech2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "scheme": "HealthTech",
+    "scheme": "HealthTech2",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

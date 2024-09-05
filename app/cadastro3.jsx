@@ -1,112 +1,117 @@
 import { Link } from 'expo-router';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { useState } from 'react'
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
+import { Checkbox } from 'react-native-paper';
 
 export default function Cadastro3() {
-  const [selectedPlans, setSelectedPlans] = useState([]);
+  const [selectedPlan, setSelectedPlan] = useState('');
 
-  const togglePlan = (plan) => {
-    setSelectedPlans((prev) =>
-      prev.includes(plan) ? prev.filter((p) => p !== plan) : [...prev, plan]
-    );
-  };
+  const plans = [
+    'Sulamerica', 'Unimed', 'Bradesco', 'Amil', 'Biosaude', 'Biovida', 'Outros', 'Não tenho plano'
+  ];
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Image
+        source={require('../images/Logo1.png')}
+        style={styles.logo}
+      />
       <Text style={styles.title}>Para finalizar, qual seu plano de saúde?</Text>
-      <Text style={styles.subtitle}>Selecione os planos:</Text>
-      {['Sulamerica', 'Unimed', 'Bradesco', 'Amil', 'Biosaúde', 'Biovida', 'Outros', 'Não tenho plano'].map((plan) => (
-        <TouchableOpacity key={plan} onPress={() => togglePlan(plan)} style={styles.checkboxContainer}>
-          <View style={styles.checkbox}>
-            {selectedPlans.includes(plan) && <View style={styles.checkboxInner} />}
-          </View>
-          <Text style={styles.planText}>{plan}</Text>
+      
+      <Text style={styles.subtitle}>Selecione os planos :</Text>
+      
+      {plans.map((plan) => (
+        <TouchableOpacity 
+          key={plan} 
+          style={styles.checkboxContainer}
+          onPress={() => setSelectedPlan(plan)}
+        >
+          <Checkbox
+            status={selectedPlan === plan ? 'checked' : 'unchecked'}
+            color="#003366"
+          />
+          <Text style={styles.checkboxLabel}>{plan}</Text>
         </TouchableOpacity>
       ))}
+      
       <View style={styles.buttonContainer}>
-        <Link href="/cadastro2" asChild style={styles.buttonSecondary}>
-          <TouchableOpacity style={[styles.button, styles.buttonSecondary]}>
-            <Text style={styles.buttonTextSecondary}>Voltar</Text>
-          </TouchableOpacity>
-        </Link>
-          <TouchableOpacity style={styles.button}>
-        <Link href="/" asChild>
-            <Text style={styles.buttonText}>Cadastrar!</Text>
-        </Link>
-          </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonSecondary}>
+          <Link href="/Cadastro2" style={styles.buttonSecondaryText}>Voltar</Link>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonPrimary}>
+          <Link href="/Home" style={styles.buttonPrimaryText}>Cadastrar!</Link>
+        </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
+    backgroundColor: '#fff',
+  },
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
+    fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
   },
   subtitle: {
     fontSize: 16,
+    fontWeight: 'bold',
+    alignSelf: 'flex-start',
     marginBottom: 10,
+    color: '#003366',
   },
   checkboxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
+    alignSelf: 'flex-start',
   },
-  checkbox: {
-    width: 20,
-    height: 20,
-    borderWidth: 1,
-    borderColor: '#007BFF',
-    marginRight: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  checkboxInner: {
-    width: 12,
-    height: 12,
-    backgroundColor: '#007BFF',
-  },
-  planText: {
+  checkboxLabel: {
+    marginLeft: 8,
     fontSize: 16,
   },
   buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     width: '100%',
     marginTop: 20,
   },
-  button: {
-    backgroundColor: '#007BFF',
-    padding: 10,
+  buttonPrimary: {
+    flex: 1,
+    backgroundColor: '#003366',
+    padding: 15,
+    borderRadius: 5,
     alignItems: 'center',
-    marginBottom: 10,
+    marginLeft: 5,
   },
   buttonSecondary: {
-    backgroundColor: '#7ACEAA',
+    flex: 1,
+    backgroundColor: '#ccc',
+    padding: 15,
     borderRadius: 5,
-    padding: 10,
-    width: '50%',
-    marginBottom: 10,
-    margin: 'auto',
-    textAlign: 'center',
+    alignItems: 'center',
+    marginRight: 5,
   },
-  buttonText: {
+  buttonPrimaryText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
   },
-  buttonTextSecondary: {
-    color: '#000',
+  buttonSecondaryText: {
+    color: '#333',
     fontSize: 16,
     fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 10,
   },
 });
