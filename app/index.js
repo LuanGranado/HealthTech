@@ -1,7 +1,8 @@
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 export default function Login() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <Image
@@ -29,8 +30,8 @@ export default function Login() {
         />
       </View>
       
-      <TouchableOpacity style={styles.button}>
-        <Link href="/(tabs)/inicio" style={styles.buttonText}>Entrar</Link>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/(tabs)/inicio')}>
+        <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
       
       <Link href="/forgot-password" style={styles.forgotPassword}>
@@ -38,7 +39,7 @@ export default function Login() {
       </Link>
       
       <Text style={styles.signupText}>
-        Ainda não tem conta? <Link href="/Cadastro1" style={styles.signupLink}>Faça seu cadastro!</Link>
+        Ainda não tem conta? <Text style={styles.signupLink} onPress={() => router.push('/Cadastro1')}>Faça seu cadastro!</Text>
       </Text>
     </View>
   );

@@ -1,10 +1,11 @@
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 
 export default function Cadastro3() {
   const [selectedPlan, setSelectedPlan] = useState('');
+  const router = useRouter();
 
   const plans = [
     'Sulamerica', 'Unimed', 'Bradesco', 'Amil', 'Biosaude', 'Biovida', 'Outros', 'Não tenho plano'
@@ -35,11 +36,11 @@ export default function Cadastro3() {
       ))}
       
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.buttonSecondary}>
-          <Link href="/Cadastro2" style={styles.buttonSecondaryText}>Voltar</Link>
+        <TouchableOpacity style={styles.buttonSecondary} onPress={() => router.push('/Cadastro2')}>
+          <Text style={styles.buttonSecondaryText}>Voltar</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonPrimary}>
-          <Link href="/Home" style={styles.buttonPrimaryText}>Cadastrar!</Link>
+        <TouchableOpacity style={styles.buttonPrimary} onPress={() => router.push('/inicio')}>
+          <Text style={styles.buttonPrimaryText}>Cadastrar!</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

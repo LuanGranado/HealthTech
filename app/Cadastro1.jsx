@@ -1,8 +1,9 @@
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 export default function Cadastro1() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <Image
@@ -50,8 +51,8 @@ export default function Cadastro1() {
         />
       </View>
       
-      <TouchableOpacity style={styles.button}>
-        <Link href="/Cadastro2" style={styles.buttonText}>Avançar</Link>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/Cadastro2')}>
+        <Text style={styles.buttonText}>Avançar</Text>
       </TouchableOpacity>
     </View>
   );

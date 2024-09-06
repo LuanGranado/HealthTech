@@ -6,7 +6,7 @@ export default function Consultas() {
   const renderConsulta = (doctor, specialty, date, isPast = false) => (
     <View style={[styles.consultaCard, isPast && styles.pastConsulta]}>
       <Image
-        source={{ uri: doctor.image }}
+        source={require('../../images/Ellipse_4-1.png')}
         style={styles.doctorImage}
       />
       <View style={styles.consultaInfo}>
@@ -33,10 +33,10 @@ export default function Consultas() {
         
         <Text style={styles.sectionTitle}>Próximas consultas</Text>
         {renderConsulta(
-          { name: 'Dra. Ana Lúcia', image: 'https://example.com/ana-lucia.jpg' },
+          { name: 'Dra. Ana Lúcia', image: '../../images/Ellipse_4-1.png' },
           'Angiologista',
           '03/03/2023'
-        )}
+        )}  
         
         <Text style={styles.sectionTitle}>Consultas passadas</Text>
         {renderConsulta(

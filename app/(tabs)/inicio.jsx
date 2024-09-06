@@ -4,6 +4,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 
 import { Ionicons } from '@expo/vector-icons';
 
 export default function Home() {
+  
   return (
     <View style={styles.container}>
       <ScrollView style={styles.content}>

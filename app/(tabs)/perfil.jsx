@@ -8,7 +8,7 @@ export default function Perfil() {
       <View style={styles.header}>
         <Text style={styles.title}>Meu perfil</Text>
         <Image
-          source={{ uri: 'https://example.com/profile-image.jpg' }}
+          source={require('../../images/Ellipse_4-2.png')}
           style={styles.profileImage}
         />
       </View>
